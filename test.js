@@ -18,7 +18,7 @@ setTimeout(async () => {
     //   }).catch(err => {
     //     console.log(`错误：${err}`)
     //   });
-    openai.ChatCompletion.create(
+    openai.ChatCompletion(
         model="gpt-3.5-turbo",
         messages=[
               {"role": "system", "content": "You are a helpful assistant."},
@@ -27,7 +27,7 @@ setTimeout(async () => {
               {"role": "user", "content": "Where was it played?"}
           ]
       ).then(res=>{
-        console.log(response['choices'][0]['message']['content'],JSON.stringify(res),'响应')
+        console.log(res['choices'][0]['message']['content'],JSON.stringify(res),'响应')
       })
 }, 2000)
 
