@@ -1,12 +1,10 @@
 import { Configuration, OpenAIApi } from "openai";
-import tunnel from 'tunnel'
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
-  console.log('111111111')
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
@@ -31,15 +29,7 @@ export default async function (req, res) {
       model: "text-davinci-003",
       prompt: generatePrompt(animal),
       temperature: 0.6,
-    },
-    {
-      httpsAgent: tunnel.httpsOverHttp({
-                proxy: {
-                          host: '154.85.102.30',
-                          port: '443',
-                }
-      })
-});
+    });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
