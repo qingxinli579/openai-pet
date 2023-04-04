@@ -1,9 +1,9 @@
 const  { Configuration, OpenAIApi } = require("openai");
-
+import openai from 'openai'
 const configuration = new Configuration({
     apiKey: process.argv.slice(2)
 });
-const openai = new OpenAIApi(configuration);
+// const openai = new OpenAIApi(configuration);
 
 setTimeout(async () => {
     // console.log('开始请求...')
